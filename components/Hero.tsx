@@ -114,9 +114,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Marquee ticker */}
-      <div className="absolute bottom-0 left-0 w-full border-y border-ink-line bg-lime-bright py-2.5 sm:py-3">
-        <div dir="ltr" className="flex w-max animate-marquee">
+      {/* Marquee ticker — dir=ltr on the wrapper so the strip is left-aligned and
+          loops seamlessly (no empty gap) in Arabic just like English */}
+      <div dir="ltr" className="absolute bottom-0 left-0 w-full overflow-hidden border-y border-ink-line bg-lime-bright py-2.5 sm:py-3">
+        <div className="flex w-max animate-marquee">
           {[0, 1].map((k) => (
             <div key={k} className="flex shrink-0 items-center">
               {Array.from({ length: 6 }).map((_, i) => (

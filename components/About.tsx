@@ -11,7 +11,8 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-24">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-2">
+      {/* dir=ltr keeps the image on the left in every language (as requested) */}
+      <div dir="ltr" className="container-x grid items-center gap-14 lg:grid-cols-2">
         {/* Visual */}
         <Reveal kind="flyL" className="relative order-2 lg:order-1">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-ink-line bg-ink-card">
@@ -40,8 +41,8 @@ export default function About() {
           </div>
         </Reveal>
 
-        {/* Copy */}
-        <div className="order-1 lg:order-2">
+        {/* Copy — text keeps the page's reading direction */}
+        <div dir={lang === "ar" ? "rtl" : "ltr"} className="order-1 lg:order-2">
           <Reveal>
             <span className="section-tag">{pick(t.tag, lang)}</span>
             <h2 className="mt-5 font-display text-[clamp(1.9rem,4.5vw,3.4rem)] font-bold uppercase leading-[1.05]">
