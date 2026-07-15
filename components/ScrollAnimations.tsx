@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "./LanguageProvider";
 
 /**
  * Global scroll engine.
@@ -11,6 +12,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  *  - `[data-scrub-x]` strips slide horizontally, tied 1:1 to scroll progress ("left" | "right").
  */
 export default function ScrollAnimations() {
+  const { lang } = useLang();
+
+  // When the language flips, the text (and therefore layout width) of the
+  // moving bands changes. Recalculate all ScrollTrigger positions so the
+  // scrub-driven strips don't freeze until the next manual refresh.
+  useEffect(() => {
+    let raf2 = 0;
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => ScrollTrigger.refresh());
+    });
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
+  }, [lang]);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 

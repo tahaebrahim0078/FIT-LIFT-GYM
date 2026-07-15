@@ -12,12 +12,19 @@
 
 html {
   scroll-behavior: smooth;
+  /* Clip any horizontal spill (fly-in animations / wide bands) so the page
+     never pans sideways on mobile. */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   background: var(--bg);
   color: #f4f6f2;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 /*
