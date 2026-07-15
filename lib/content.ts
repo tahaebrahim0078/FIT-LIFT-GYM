@@ -178,7 +178,7 @@ export const dict = {
     tag: t("الفريق", "Our Coaches"),
     title: t("مدربين بيفرقوا معاك", "Coaches who make the difference"),
     people: [
-      { name: t("أحمد قمر", "Ahmed Kamar"), role: t("مدير اللياقة", "Fitness Manager"), ig: "@ahmed_kamar10", igUrl: "https://www.instagram.com/ahmed_kamar10", img: "/coach-ahmed.jpg" },
+      { name: t("أحمد قمر", "Ahmed Kamar"), role: t("مدير اللياقة", "Fitness Manager"), ig: "@ahmed_kamar10", igUrl: "https://www.instagram.com/ahmed_kamar10", img: "/fitness manager ahmed qamarV2.jpeg" },
       { name: t("كابتن سارة", "Capt. Sara"), role: t("مدربة لياقة وكارديو", "Fitness & Cardio"), ig: "@sara.fit" },
       { name: t("كابتن محمد", "Capt. Mohamed"), role: t("كروس فيت وفانكشنال", "CrossFit & Functional"), ig: "@mo.fit" },
     ],
