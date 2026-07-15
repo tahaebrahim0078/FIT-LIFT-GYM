@@ -40,6 +40,10 @@ const config: Config = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        marqueeReverse: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
         floaty: {
           "0%,100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-14px)" },
@@ -51,6 +55,7 @@ const config: Config = {
       },
       animation: {
         marquee: "marquee 22s linear infinite",
+        "marquee-reverse": "marqueeReverse 22s linear infinite",
         floaty: "floaty 6s ease-in-out infinite",
         pulseGlow: "pulseGlow 4s ease-in-out infinite",
       },

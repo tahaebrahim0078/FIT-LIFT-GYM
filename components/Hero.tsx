@@ -116,7 +116,10 @@ export default function Hero() {
 
       {/* Marquee ticker */}
       <div className="absolute bottom-0 left-0 w-full border-y border-ink-line bg-lime-bright py-2.5 sm:py-3">
-        <div className="flex w-max animate-marquee">
+        <div
+          dir="ltr"
+          className={`flex w-max ${lang === "ar" ? "animate-marquee-reverse" : "animate-marquee"}`}
+        >
           {[0, 1].map((k) => (
             <div key={k} className="flex shrink-0 items-center">
               {Array.from({ length: 6 }).map((_, i) => (
