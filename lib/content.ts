@@ -155,9 +155,14 @@ export const dict = {
     ),
     men: t("رجال", "Men"),
     women: t("سيدات", "Women"),
+    shifts: [
+      t("الشيفت الأول (رجال)", "First Shift (Men)"),
+      t("الشيفت الثاني (سيدات)", "Second Shift (Women)"),
+      t("الشيفت الثالث (رجال)", "Third Shift (Men)"),
+    ],
     legendMen: t("فترة الرجال", "Men's hours"),
     legendWomen: t("فترة السيدات", "Women's hours"),
-    closed: "—————",
+    closed: t("مقفول صباحاً", "Closed mornings"),
     rows: [
       { day: t("السبت", "Sat"), men1: "7AM : 3PM", women: "3PM : 9PM", men2: "9PM : 7AM" },
       { day: t("الأحد", "Sun"), men1: "7AM : 10AM", women: "10AM : 6PM", men2: "6PM : 7AM" },

@@ -49,8 +49,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="ar"
-      dir="rtl"
+      lang="en"
+      dir="ltr"
       className={`${display.variable} ${sans.variable} ${arabic.variable} ${arabicDisplay.variable}`}
     >
       <body className="font-sans antialiased">

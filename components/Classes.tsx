@@ -21,11 +21,11 @@ export default function Classes() {
     if (!value) {
       return (
         <div
-          className={`flex items-center justify-center rounded-xl bg-white/[0.06] py-2.5 text-sm font-bold tracking-widest text-white/30 ${
+          className={`flex items-center justify-center rounded-xl bg-white/[0.06] px-2 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-lime-bright/70 ${
             full ? "w-full" : ""
           }`}
         >
-          {t.closed}
+          {pick(t.closed, lang)}
         </div>
       );
     }
@@ -90,9 +90,9 @@ export default function Classes() {
           <div dir="ltr">
             <div className="mb-3 grid grid-cols-[0.7fr_1fr_1fr_1fr] gap-3">
               <div />
-              <HeadCell label={pick(t.men, lang)} />
-              <HeadCell label={pick(t.women, lang)} accent />
-              <HeadCell label={pick(t.men, lang)} />
+              <HeadCell label={pick(t.shifts[0], lang)} />
+              <HeadCell label={pick(t.shifts[1], lang)} accent />
+              <HeadCell label={pick(t.shifts[2], lang)} />
             </div>
             <div className="flex flex-col gap-3">
               {t.rows.map((r, i) => (
@@ -121,9 +121,9 @@ export default function Classes() {
                 {pick(r.day, lang)}
               </div>
               <div className="space-y-2.5">
-                <SlotRow label={pick(t.men, lang)} value={r.men1} />
-                <SlotRow label={pick(t.women, lang)} value={r.women} women />
-                <SlotRow label={pick(t.men, lang)} value={r.men2} />
+                <SlotRow label={pick(t.shifts[0], lang)} value={r.men1} />
+                <SlotRow label={pick(t.shifts[1], lang)} value={r.women} women />
+                <SlotRow label={pick(t.shifts[2], lang)} value={r.men2} />
               </div>
             </div>
           ))}
@@ -138,7 +138,7 @@ export default function Classes() {
 function HeadCell({ label, accent }: { label: string; accent?: boolean }) {
   return (
     <div
-      className={`text-center font-display text-sm font-bold uppercase tracking-[0.25em] sm:text-base ${
+      className={`px-1 text-center font-display text-xs font-bold uppercase leading-tight tracking-wide sm:text-sm ${
         accent ? "text-lime-bright" : "text-white/80"
       }`}
     >
