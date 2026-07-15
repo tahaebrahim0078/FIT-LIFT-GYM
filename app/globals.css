@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: #f4f6f2;
+  overflow-x: hidden;
+}
+
+/*
+ * Arabic typography.
+ * next/font auto-generates a Latin fallback for Oswald/Inter that ALSO renders
+ * Arabic (with a system face), so per-glyph fallthrough never reaches our Arabic
+ * fonts. We force them explicitly when the document is Arabic instead.
+ */
+html[lang="ar"] {
+  font-family: var(--font-ar), "Segoe UI", Tahoma, sans-serif;
+}
+html[lang="ar"] .font-display {
+  font-family: var(--font-ar-display), var(--font-ar), "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+/* Fine grain + subtle vignette for that premium dark look */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(47, 183, 48, 0.06),
+    transparent 55%
+  );
+}
+
+::selection {
+  background: #2fb730;
+  color: #0a0a0a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #234a24;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2fb730;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-lime-bright px-7 py-3.5
+      text-sm font-bold uppercase tracking-wide text-ink transition-all duration-300
+      hover:shadow-[0_0_35px_-5px_rgba(47,183,48,0.7)] hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5
+      text-sm font-bold uppercase tracking-wide text-white/90 transition-all duration-300
+      hover:border-lime-bright hover:text-lime-bright;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 rounded-full border border-lime-bright/30 bg-lime-bright/5
+      px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-lime-bright;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-line bg-ink-card/60 backdrop-blur-sm;
+  }
+
+  .glow-line {
+    background: linear-gradient(90deg, transparent, rgba(47, 183, 48, 0.6), transparent);
+  }
+}
+
+/* Display font weight for big headers */
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1.5px rgba(47, 183, 48, 0.55);
+  color: transparent;
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Prevent flash before GSAP hides elements */
+.reveal {
+  opacity: 0;
+}
+.reveal-ready .reveal {
+  opacity: 1;
+}
+
+/*
+ * Hero: render hidden in the server HTML so nothing shows before GSAP animates
+ * it in (stops the "logo appears, then re-fades" flash on refresh). GSAP sets an
+ * inline opacity that overrides these; the `.anim-ready` failsafe reveals them
+ * if JS ever fails to run.
+ */
+.hero-anim {
+  opacity: 0;
+}
+.hero-anim-logo {
+  opacity: 0;
+}
+body.anim-ready .hero-anim {
+  opacity: 1;
+}
+body.anim-ready .hero-anim-logo {
+  opacity: 0.25;
+}
