@@ -28,15 +28,50 @@ const arabicDisplay = Changa({
   variable: "--font-ar-display",
 });
 
+const siteUrl = "https://fit-lift-gym.vercel.app";
+const siteTitle = "FIT & LIFT GYM | جيم بنها الأول";
+const siteDescription =
+  "فيت آند ليفت — جيم متكامل في بنها. أحدث الأجهزة، مدربين محترفين، وحصص متنوعة. الجسد يحقق ما يؤمن به العقل.";
+
 export const metadata: Metadata = {
-  title: "FIT & LIFT GYM | جيم بنها الأول",
-  description:
-    "فيت آند ليفت — جيم متكامل في بنها. أحدث الأجهزة، مدربين محترفين، وحصص متنوعة. الجسد يحقق ما يؤمن به العقل.",
-  keywords: ["جيم بنها", "Fit and Lift", "gym Benha", "fitness Qalyubia"],
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  keywords: ["جيم بنها", "Fit and Lift", "gym Benha", "fitness Qalyubia", "جيم قليوبية", "فيت اند ليفت"],
+  applicationName: "FIT & LIFT GYM",
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "FIT & LIFT GYM | جيم بنها الأول",
+    title: siteTitle,
     description: "الجسد يحقق ما يؤمن به العقل — جيم متكامل في بنها.",
+    url: siteUrl,
+    siteName: "FIT & LIFT GYM",
+    locale: "ar_EG",
     type: "website",
+    images: [
+      {
+        url: "/mainLogo.png",
+        width: 631,
+        height: 780,
+        alt: "FIT & LIFT GYM",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: "الجسد يحقق ما يؤمن به العقل — جيم متكامل في بنها.",
+    images: ["/mainLogo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
