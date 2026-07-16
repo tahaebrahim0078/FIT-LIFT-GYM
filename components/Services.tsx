@@ -26,6 +26,7 @@ export default function Services() {
                 className="group relative overflow-hidden rounded-2xl border border-ink-line bg-ink-card/50 p-7 transition-all duration-300 hover:border-lime-bright/50 hover:bg-ink-card"
               >
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-lime-bright/0 blur-3xl transition-all duration-500 group-hover:bg-lime-bright/15" />
+                <span className="sheen" aria-hidden />
                 <span className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-lime-bright/10 text-white transition-all duration-300 group-hover:bg-lime-bright group-hover:text-ink">
                   {img ? (
                     <img

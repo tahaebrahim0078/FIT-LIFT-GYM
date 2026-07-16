@@ -4,3 +4,9 @@ out
 .env*
 *.log
 .DS_Store
+tsconfig.tsbuildinfo
+
+# Local tooling (Claude / Higgsfield skills) — not part of the website
+.claude/
+.agents/
+skills-lock.json

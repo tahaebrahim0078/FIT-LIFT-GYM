@@ -61,6 +61,7 @@ export default function ScrollBand({
         <Row dir="left" filled />
         <Row dir="right" filled={false} />
       </div>
+      {isGreen && <span className="band-glow" aria-hidden />}
     </section>
   );
 }

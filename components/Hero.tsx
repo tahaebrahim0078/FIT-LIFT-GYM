@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useLang } from "./LanguageProvider";
 import { dict, pick } from "@/lib/content";
 import { ArrowRight, Star } from "./Icons";
+import CinematicBackground from "./CinematicBackground";
 
 export default function Hero() {
   const { lang } = useLang();
@@ -50,6 +51,9 @@ export default function Hero() {
     >
       {/* Background layers */}
       <div className="absolute inset-0 grid-lines opacity-50" />
+
+      {/* Cinematic code-driven backdrop: rising green embers + drifting light beam */}
+      <CinematicBackground />
 
       {/* Cinematic logo behind the text */}
       <div

@@ -106,6 +106,81 @@ body::before {
   }
 }
 
+/* Premium light-sweep ("sheen") that glides diagonally across a card on hover.
+   Drop a <span class="sheen" /> inside any `group relative overflow-hidden` box. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.sheen::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -75%;
+  width: 55%;
+  height: 220%;
+  transform: rotate(18deg) translateX(0);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14) 45%,
+    rgba(47, 183, 48, 0.28) 50%,
+    rgba(255, 255, 255, 0.14) 55%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.group:hover .sheen::after {
+  opacity: 1;
+  animation: sheenSweep 0.9s ease-out;
+}
+@keyframes sheenSweep {
+  0% {
+    transform: rotate(18deg) translateX(0);
+  }
+  100% {
+    transform: rotate(18deg) translateX(420%);
+  }
+}
+
+/* Slow moving highlight that breathes across the green scroll band. */
+.band-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background: radial-gradient(
+    60% 140% at 50% 50%,
+    rgba(255, 255, 255, 0.35),
+    transparent 60%
+  );
+  background-size: 45% 100%;
+  background-repeat: no-repeat;
+  animation: bandGlow 7s linear infinite;
+}
+@keyframes bandGlow {
+  0% {
+    background-position: -30% 0;
+  }
+  100% {
+    background-position: 130% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .sheen::after {
+    animation: none;
+  }
+  .band-glow {
+    animation: none;
+  }
+}
+
 /* Display font weight for big headers */
 .font-display {
   letter-spacing: -0.01em;
